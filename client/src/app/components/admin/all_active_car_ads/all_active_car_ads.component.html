@@ -1,0 +1,231 @@
+<div *ngIf="pageMode=='edit'" style="margin-top:40px" class="well">
+
+        <form #form="ngForm">
+                <legend class="leads">Edit Car Ad</legend>
+                
+
+
+
+                <div class="form-group row">
+
+                        <div class="col-md-3">
+                                <label class="control-label">Ad Status </label>
+                        </div>
+                        <div class="col-md-6">
+
+                                <input name="options" type="radio" [(ngModel)]="is_active" [value]="true" [checked]="model.is_active" />Active
+                                <br/>
+                                <input name="options" type="radio" [(ngModel)]="is_active" [value]="false" [checked]="!is_active" />InActive
+                                <br/>
+
+
+
+                        </div>
+                </div>
+                <div class="form-group row">
+
+                        <div class="col-md-3">
+                                <label for="modelYear" class="control-label">Car Model Year(*) </label>
+                        </div>
+                        <div class="col-md-6">
+                                <input type="text" id="modelYear" required type="text" class="form-control" #modelYear="ngModel" name="car_model_year" [(ngModel)]="car_model_year"
+                                />
+
+                        </div>
+                </div>
+                <div class="form-group row">
+
+                        <div class="col-md-3">
+                                <label for="carMake">Car Make*</label>
+                        </div>
+                        <div class="col-md-6">
+                                <select class="form-control" name="car_make_id" [(ngModel)]="car_make_id" (change)="onMakeSelect($event.target.value)">
+                                        <option *ngFor="let make of allCarMakes" [value]="make._id">
+                                                {{make.car_make}}
+                                        </option>
+                                </select>
+
+                        </div>
+                </div>
+                <div class="form-group row">
+
+                        <div class="col-md-3">
+                                <label for="carModal">Car Model</label>
+                        </div>
+                        <div class="col-md-6">
+                                <select class="form-control" name="model_name" [(ngModel)]="model_name">
+                                        <option *ngFor='let model of allCarModels' [value]="model.car_model">{{model.car_model}}</option>
+                                </select>
+
+                        </div>
+                </div>
+                <div class="form-group row">
+
+                        <div class="col-md-3">
+                                <label>KM's Driven</label>
+                        </div>
+                        <div class="col-md-6">
+                                <input type="text" class="form-control" name="car_km_driven" [(ngModel)]="car_km_driven" />
+
+                        </div>
+                </div>
+
+                <div class="form-group row">
+
+                        <div class="col-md-3">
+                                <label for="form_message">Car Price(*)</label>
+                        </div>
+                        <div class="col-md-6">
+                                <input type="text" class="form-control" name="car_price" [(ngModel)]="car_price" />
+
+                        </div>
+                </div>
+                <div class="form-group row">
+
+                        <div class="col-md-3">
+                                <label class="col-form-label">Car Description (*)</label>
+                        </div>
+                        <div class="col-md-6">
+                                <input type="text" class="form-control" name="car_description" [(ngModel)]="car_description" />
+
+                        </div>
+                </div>
+                <div class="form-group row">
+
+                        <div class="col-md-3">
+                                <label>Engine Type(*)</label>
+                        </div>
+                        <div class="col-md-6">
+                                <select class="form-control" name="car_engine_type" [(ngModel)]="car_engine_type">
+                                        <option>Petrol</option>
+                                        <option>Diesel</option>
+                                        <option>CNG</option>
+                                        <option>Hybrid</option>
+                                </select>
+
+                        </div>
+                </div>
+                <div class="form-group row">
+
+                        <div class="col-md-3">
+                                <label class="col-form-label">Transmission Type (*)</label>
+                        </div>
+                        <div class="col-md-6">
+                                <select class="form-control" name="car_transmission_type" [(ngModel)]="car_transmission_type">
+                                        <option>Manual</option>
+                                        <option>Automatic</option>
+
+                                </select>
+
+                        </div>
+                </div>
+                <div class="form-group row">
+
+                        <div class="col-md-3">
+                                <label for="car_engine_capacity"> Engine Capacity(*)</label>
+                        </div>
+                        <div class="col-md-6">
+                                <input type="text" class="form-control" name="car_engine_capacity" [(ngModel)]="car_engine_capacity" required />
+
+                        </div>
+                </div>
+
+                <div class="form-group row">
+
+                        <div class="col-md-3">
+                                <label for="form_message"> Mobile Number(*)</label>
+                        </div>
+                        <div class="col-md-3">
+                                <input type="text" class="form-control" name="contact_number" [(ngModel)]="contact_number" />
+
+                        </div>
+                        <div class="col-md-3">
+                        <input type="text" class="form-control" name="original_number" [(ngModel)="original_number"  />
+        
+                        </div>
+                </div>
+
+                <div class="row form-group">
+                        <div class="col-md-8 col-md-offset-4">
+                                <input type="button" value="Cancel" (click)="setPageMode('default')" />
+
+                                <input type="button" value="Update" (click)="updateAd()" />
+
+                        </div>
+
+                </div>
+        </form>
+
+</div>
+<div *ngIf="pageMode!=='edit'">
+<div *ngIf="allCarAds" style="margin-top:30px">
+        <h3>All Active Car Ads</h3>
+        <table class="table">
+                <tr>
+                        <th>Car Made</th>
+                        <th>Car Model</th>
+                        <th>Car Model Year</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+
+
+                </tr>
+
+                <tr *ngFor="let item of allCarAds">
+
+                        <td>{{item.car_make.make_name}}</td>
+                        <td>{{item.car_make.model_name}}</td>
+                        <td>{{item.car_model_year}}</td>
+                        <td>{{item.car_price }}</td>
+                        <td *ngIf='item.is_active'>Active</td>
+                        <td *ngIf='!item.is_active'>Not Active</td>
+                        <td>
+                                <button class="btn secondary" (click)="setPageMode('edit',item)">
+
+                                        Edit
+                                </button>
+
+
+
+                        </td>
+                        <td>
+                                <button class="btn secondary" (click)="deleteAd(item)">
+
+                                        Delete
+                                </button>
+                        </td>
+
+
+
+
+
+
+                </tr>
+        </table>
+
+        <nav aria-label="Page navigation example" class="table-responsive mb-2">
+                        <ul class="pagination justify-content-center" *ngIf="pager.pages && pager.pages.length" >
+                          <li [ngClass]="{'page-item disabled':pager.currentPage === 1 }">
+                                <a class="page-link" (click)="setPage(1)" tabindex="-1">First</a>
+                          </li>
+                          <li [ngClass]="{'page-item disabled':pager.currentPage === 1 }">
+                            <a class="page-link" (click)="setPage(pager.currentPage-1)" tabindex="-1">Previous</a>
+                          </li>
+                          
+                          <li *ngFor="let page of pager.pages" [ngClass]="{'page-item active':pager.currentPage === page}">
+                              <a (click)="setPage(page)" class="page-link">{{page}}</a>
+                            </li>
+                         
+                        <li [ngClass]="{'page-item disabled':pager.currentPage === pager.totalPages }">
+                          <a class="page-link" (click)="setPage(pager.currentPage+1)" tabindex="-1">Next</a>
+                        </li>
+                        <li [ngClass]="{'page-item disabled':pager.currentPage === pager.totalPages }">
+                            <a class="page-link" (click)="setPage(pager.totalPages)" tabindex="-1">Last</a>
+                      </li>
+                        </ul>
+         </nav>
+</div>
+
+</div>

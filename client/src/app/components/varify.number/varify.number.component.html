@@ -1,0 +1,66 @@
+
+<div class="container">
+  <div>
+    <div class="">
+      <div style="max-width:50%;margin-left:auto;margin-right:auto;margin-top:100px">
+        <div class="well">
+          <h4 class="lead">Varify Number</h4>
+          <p *ngIf="message">{{message}}</p>
+          <form  #varification_form="ngForm" novalidate>
+            <div class="row">
+              <div class="col-md-6 ">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="fa fa-phone"></i>
+                  </span>
+                  <input type="text" name="code2" class="form-control" required maxlength="4" 
+                   minlength="4" pattern="^[0-9]*[0-9]*[0-9]*[0-9]*$"
+  
+                  id="code1"
+  
+                  [(ngModel)]="code"
+                  #code1="ngModel"
+                  placeholder="Enter the varification code" >
+                
+                 
+                </div>
+              </div>
+             
+            </div> 
+  
+            <div class="row">
+              <div class="col-md-6">
+                <div *ngIf="code1.errors&&(code1.dirty ||code1.touched)" class="">
+                  <div [hidden]="!code1.errors.required">
+                    Please enter a  code.
+                  </div>
+                  <div [hidden]="!code1.errors.minlength">
+                      The code should be 4 degit
+                    </div>
+                    <div [hidden]="!code1.errors.pattern">
+                      The code should does not include characters.
+                    </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="row">
+  
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="button" value="Send Varification Code" [disabled]="varification_form.invalid" class="btn btn-success form-control" (click)="sendCode()"/>
+                 
+               
+               
+                </div>
+              </div>
+  
+            </div>
+          </form>
+        </div>
+  
+      </div>
+    </div>
+  
+  </div>
+</div>

@@ -1,0 +1,113 @@
+
+
+<div *ngIf="isDataLoaded">
+    <div class="container">
+        <div class="row">
+
+                <div class="col-md-6">
+                        <div *ngIf="carAd.car_image!=null">                  
+                                <div id="gallery">   
+                                    <div id="upper" >
+                                            <img src="{{this.image_baseUrl}}\{{selectedPic}}" data-imagezoom="true" class="img-responsive"/>
+                                    </div>             
+                                   
+                                    
+                                </div>
+                                
+                                <div id="thumbs">
+                                       
+                                    <a href="" *ngFor="let item of carAd.car_image" class="thumb" (click)="setPicture(item)" onclick="return false" >
+                                        <img src="{{this.image_baseUrl}}\{{item}}"/>
+                                    </a>
+
+                                </div>
+                                                             
+                        </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h3>Car Features</h3>
+                   <p class="btn btn-primary">Price:{{carAd.car_price}} Lacks </p>
+                    <p style="font-size:1.2em"><strong>Comments by the seller:</strong>{{carAd.car_description}}</p>
+                    <p style="font-size:1.2em"><strong>Contact Number:</strong>{{carAd.contact_number}}</p>
+                    <p style="font-size:1.2em"><strong>Registration Type:</strong>{{carAd.car_registration_type}}</p>
+
+                    
+                    <hr />
+                     <ul>
+			
+                        <li style="font-size:1.2em"> <strong>Model Year:</strong>   {{carAd.car_model_year}}</li>
+                        <li style="font-size:1.2em"> <strong>Car Make:</strong> {{carAd.car_make.make_name}}</li>
+                        <li style="font-size:1.2em">  <strong>Car Model :</strong>{{carAd.car_make.model_name}}</li>
+                        <li style="font-size:1.2em"> <strong>Tansmission Type :</strong>{{carAd.car_transmission_type}}</li>
+                        <li style="font-size:1.2em"> <strong>Fuel:</strong>{{carAd.car_engine_type}}</li>
+                        <li style="font-size:1.2em"> <strong>Engince Capacity(cc):</strong>{{carAd.car_engine_capacity}}</li>
+                   
+                        <li style="font-size:1.2em"><strong>KM's Driven:</strong>{{carAd.car_km_driven}}</li>
+                        <a [routerLink]="[ '/car_ads']" class="btn btn-primary">see more cars</a>
+
+                    </ul>
+		
+                </div>
+
+        </div>     
+        
+                
+     </div>
+
+</div>
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+ <style type="text/css">
+
+#gallery
+{
+width:100%;
+height: 350px;
+border:1px solid;
+position: relative;
+
+}
+
+#upper img
+{
+width:100%;
+height:100%;
+position:absolute;
+
+}
+#thumbs
+{
+ width:600px;
+ /* border:2px solid black; */
+  /* position: relative; */
+margin-left:20px;
+}
+.thumb img
+{
+    width:100px;
+    
+    /* position: absolute; */
+    opacity: .4;
+}
+
+.thumb img:hover{
+
+    opacity: 1;
+}
+
+ 
+  
+</style>
+
+

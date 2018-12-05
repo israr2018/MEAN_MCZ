@@ -1,0 +1,51 @@
+<div>
+  <div class="form-group">
+    <label for="make_name">Car Make</label>
+    <input type="text" name="car_make" id="car_make" class="form-control" #name="ngModel" [(ngModel)]="make_name">
+
+
+  </div>
+  <div class="form-group">
+    <button class="btn btn-secondary" (click)="saveCarMake()">
+      
+      New Car Make
+    </button>
+  </div>
+</div>
+
+
+<div *ngIf="allCarMakes && allCarMakes.length>0&& pageMode!=='add'">
+
+   
+<h3>All Car Makes List</h3>
+<div class="">
+  <table class="table">
+    <tr class="row" *ngFor="let item of allCarMakes">
+      <td>
+        <span *ngIf="!item.isEditMode">{{item.car_make}} </span>
+        <input type="text" class="form-control" *ngIf="item.isEditMode" [value]="item.car_make" [(ngModel)]="updated_car_make" />
+        
+      </td>
+      <td>
+
+        <button class="btn btn-secondary" (click)="setEditMode(item,true)" *ngIf="!item.isEditMode">
+          Edit</button>
+          <button class="btn btn-secondary" (click)="updateCarMake($event,item)" *ngIf="item.isEditMode">
+           Save</button>
+          <button class="btn btn-secondary" (click)="setEditMode(item,false)" *ngIf="item.isEditMode">
+                         Cancel</button>
+
+      </td>
+      <td>
+        <button class="btn btn-secondary" (click)="deleteCarMake(item)" *ngIf="!item.isEditMode">
+          Delete</button>
+
+
+      </td>
+
+    </tr>
+  </table>
+</div>
+</div>
+
+

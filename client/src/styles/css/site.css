@@ -1,0 +1,149 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+  }
+  body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #343a40;
+    color:#fff;
+  }
+ 
+ 
+  
+  /* Custom page CSS
+  -------------------------------------------------- */
+  /* Not required for template or sticky footer method. */
+  
+  body > .container {
+    padding: 60px 15px 0;
+  }
+  
+  .footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  
+  code {
+    font-size: 80%;
+  }
+
+  .mybanner{
+
+    /* background-color: #706f74; */
+    height: 400px;
+    width:100%;
+
+    /* background: url('./test3.jpg') no-repeat ; */
+    background: url('../../assets/images/car_mela.jpg') no-repeat ;
+    background-size: cover;
+    
+}
+.mybanner h2{
+    color:#ffffff;
+    text-align: center;
+    padding-top:150px;
+    font-size:60px;
+    /*Test */
+
+
+    
+}
+.mybanner-text{
+    
+  color:#ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  text-align:center;
+}
+
+@media (max-width: 400px) {
+  .container {
+    max-width: 400px;
+    /* background-color: red; */
+  }
+  .mybanner h2{
+    color:#ffffff;
+    text-align: center;
+    padding:auto;
+    padding-top:80px;
+    font-size:20px;
+    padding-top: 93px;
+    
+}
+.mybanner-text{
+    
+  color:#ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align:center;
+}
+
+
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+    /* background-color:blue; */
+  }
+  .mybanner h2{
+    color:#ffffff;
+    text-align: center;
+    padding:auto;
+    padding-top:110px;
+    font-size:40px;
+    
+}
+.mybanner-text{
+    
+  color:#ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  text-align:center;
+}
+.pl-4 {
+  padding-left: 35.5rem!important;
+}
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+  .nav-link {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+    /* background-color:yellow; */
+  }
+  .pl-4 {
+    padding-left: 60.5rem!important;
+  }
+  
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
